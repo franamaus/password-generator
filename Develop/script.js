@@ -7,150 +7,97 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// var characterLowerCase = 'abcdefghijklmnopqrstuvwxyz';
-// var characterUpperCase = characterLowerCase.toUpperCase();
-// console.log(characterUpperCase[2]);
-
-
-// var characterLowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-// var characterUpperCase = [];
-// for (i = 0; i < characterLowerCase.length; i++) {
-//   characterUpperCase[i] = characterLowerCase[i].toUpperCase();
-// };
-
-
-// userInput = [true, false, true, false]
-// var result = ''
-// if userInput[0] == true {
-//     result += characterLowerCase;
-// };
-// if userInput[1] == true {
-//     result += characterUpperCase;
-// };  
-
-// var userSelectionPrompts = function() {
-//   var passwordLength = window.prompt("Choose length of password. Must be 8-128 characters long.")
-//   if (passwordLength > 8 && passwordLength < 128) {
-//     console.log("the user has entered " + passwordLength);
-//   } else {
-//     alert("You must enter a number between 8-128.");
-//     userSelectionPrompts();
-//   }
-
-  var selectCharacterLength = function() {
-    var passwordLength = window.prompt("Choose length of password. Must be 8-128 characters long.")
-    if (passwordLength < 8 || passwordLength > 128) {
-      alert("You must enter a number between 8-128.");
-      selectCharacterLength();
-    }
-    return passwordLength;
-  }
-  
- 
-  
-  
-  function selectCharacterTypes() {
-    var selectionPool = '';
-  var selectLowerCase = window.confirm("Would you like lowercase characters in your password?")
-  console.log(selectLowerCase);
-  if (selectLowerCase == true) {
-    selectionPool += characterLowerCase;
-    console.log("lowercase " + selectLowerCase);
-  }
-
-  var selectUpperCase = window.confirm("Would you like UPPERCASE characters in your password?")
-  console.log(selectUpperCase);
-  if (selectUpperCase == true) {
-    selectionPool += characterUpperCase;
-    console.log("uppercase " + selectUpperCase);
-  }
-
-  var selectNumber = window.confirm("Would you like to have numbers in your password?")
-  console.log(selectNumber);
-  if (selectNumber == true) {
-    selectionPool += characterNumber;
-    console.log("number " + selectNumber);
-  }
-
-  var selectSpecialCharacter = window.confirm("Would you like to have special characters (#@*) in your password?")
-  console.log(selectSpecialCharacter);
-  if (selectSpecialCharacter == true) {
-    selectionPool += characterSpecialCharacter;
-    console.log("special characters " + selectSpecialCharacter);
-  }
-
-  if (selectionPool === '') {
-    alert("You must select at least one or more of the 4 options for character types.")
-    selectCharacterTypes();
-  }
-  return selectionPool;
-  }
-
-
-
-// var userSelectionPrompts = function() {
-//   var passwordLength = window.prompt("Choose length of password. Must be 8-128 characters long.")
-//   if (passwordLength > 8 && passwordLength < 128) {
-//     passwordLength = false;
-//     console.log("the user has entered " + passwordLength);
-//     alert("You must enter a number between 8-128.");
-//     userSelectionPrompts();
-//   } else {
-//     // console.log("the user has entered " + passwordLength);
-//     return passwordLength;
-//   }
-// }
-  
-//   var confirmLowerCase = window.confirm("Would you like your password to include lower case letters?");
-//   if (confirmLowerCase) {
-  
-// }
-// }
-
+// Four character types options writen as strings
 var characterLowerCase = 'abcdefghijklmnopqrstuvwxyz';
 var characterUpperCase = characterLowerCase.toUpperCase();
 var characterNumber = '0123456789';
 var characterSpecialCharacter = '!"#$%&()\'*+,-./:<>=?@[]\\^_`{}|~';
 
-// var characterTypeChoice = [
-//   { 
-//     name: "lowercase",
-//     list: randomNumber(0, characterLowerCase.length)
-//   },
-//   {
-//     name: "UPPERCASE",
-//     list: randomNumber(0,characterUpperCase.length)
-//   },
-//   {
-//     name: "Number",
-//     list: randomNumber(0,characterNumber.length)
-//   },
-//   {
-//     name: "Sepcial Characters",
-//     list: randomNumber(0, characterSpecialCharacter.length)
-//   }
-// ];
+// This function retrieves input for user input of password length
+var selectCharacterLength = function() {
+  var passwordLength = window.prompt("Choose length of password. Must be 8-128 characters long.")
+  // If input is outside of 8<x<128 then the user is prompted to re-enter
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("You must enter a number between 8-128.");
+    selectCharacterLength();
+  }
+  // Return acceptable input to function
+  return passwordLength;
+}
+ 
+// This function holds a series of four character type options to be confirmed by the user
+function selectCharacterTypes() {
+  // This empty string will hold the 1-4 chosen character types
+  var selectionPool = '';
+  // Option to include lowercase
+  var selectLowerCase = window.confirm("Would you like to include lowercase characters in your password?")
+  console.log(selectLowerCase);
+  if (selectLowerCase == true) {
+    // If true, concatenate the string of characterLowerCase to the selectionPool string
+    selectionPool += characterLowerCase;
+    console.log("lowercase " + selectLowerCase);
+  }
 
-// for (var i = 0; i < characterTypeChoice.length; i++) {
+  // Option to include uppercase
+  var selectUpperCase = window.confirm("Would you like to include UPPERCASE characters in your password?")
+  console.log(selectUpperCase);
+  if (selectUpperCase == true) {
+    // If true, concatenate the string of characterUpperCase to the selectionPool string
+    selectionPool += characterUpperCase;
+    console.log("uppercase " + selectUpperCase);
+  }
 
-// }
+  // Option to include integer
+  var selectNumber = window.confirm("Would you like to include numbers (123) in your password?")
+  console.log(selectNumber);
+  if (selectNumber == true) {
+    // If true, concatenate the string of characterNumber to the selectionPool string
+    selectionPool += characterNumber;
+    console.log("number " + selectNumber);
+  }
 
+  // Option to include special characters
+  var selectSpecialCharacter = window.confirm("Would you like to include special characters (#@*) in your password?")
+  console.log(selectSpecialCharacter);
+  if (selectSpecialCharacter == true) {
+    selectionPool += characterSpecialCharacter;
+    // If true, concatenate the string of characterSpecialCharacter to the selectionPool string
+    console.log("special characters " + selectSpecialCharacter);
+  }
 
+  // In the case where the user did not make a selection, leaving an empty string
+  if (selectionPool === '') {
+    alert("You must select at least one or more of the four options for password.")
+    // use recursive funtion
+    selectCharacterTypes();
+  }
+  // Return the populated string to selectCharacterTypes()
+  return selectionPool;
+}
+
+// This function is called by the writePassword()
 function generatePassword() {
+  // Variable that holds length of password
   var passwordLength = selectCharacterLength();
+  // Variable that holds selected character types
   var chosenCharacterPool = selectCharacterTypes();
-  console.log(passwordLength + " with " + chosenCharacterPool);
+  console.log("The password will have " + passwordLength + " characters randomised from " + chosenCharacterPool);
+  // Variable that holds the concatenated string after random selection
   var password = '';
+  // Loop with set conditions to select one character, repeating until passwordLength is met
   for (i = 0; i < passwordLength; i++) {
+    // Variable that holds a single character randomly picked within the range of chosenCharacterPool
     var index = Math.floor(Math.random() * (chosenCharacterPool.length -1));
+    // Password is compiled here
     password += chosenCharacterPool[index];
   }
   console.log(password.length);
-return password;
+  // Return the password to function
+  return password;
 }
+
