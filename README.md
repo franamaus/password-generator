@@ -14,13 +14,13 @@ This project is a password generator that prompts the user to select the length 
 	
 ### Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* HTML
+* CSS
+* Javascript
 	
 ### Setup
 To run this project, open link in browser.
-
+https://franamaus.github.io/password-generator/
 
 
 
